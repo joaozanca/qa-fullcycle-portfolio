@@ -42,6 +42,19 @@ body {
   flex: 1;
 }
 
+.task-status {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 1rem;
+  background: #eee;
+  color: #555;
+}
+
+.task-item.completed .task-status {
+  background: #e3f7e8;
+  color: #1a7f37;
+}
+
 footer {
   margin-top: 2rem;
   font-size: 0.8rem;

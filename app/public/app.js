@@ -1,5 +1,6 @@
 const form = document.getElementById("task-form");
 const titleInput = document.getElementById("task-title");
+const submitButton = document.querySelector('[data-testid="task-submit-button"]');
 const list = document.getElementById("task-list");
 const formError = document.getElementById("form-error");
 const versionLabel = document.getElementById("version");
@@ -43,6 +44,11 @@ function renderTaskItem(task) {
   title.textContent = task.title;
   title.dataset.testid = "task-title-text";
 
+  const status = document.createElement("span");
+  status.className = "task-status";
+  status.textContent = task.completed ? "Concluída" : "Pendente";
+  status.dataset.testid = "task-status-text";
+
   const editBtn = document.createElement("button");
   editBtn.textContent = "Editar";
   editBtn.dataset.testid = "task-edit-button";
@@ -53,7 +59,7 @@ function renderTaskItem(task) {
   deleteBtn.dataset.testid = "task-delete-button";
   deleteBtn.addEventListener("click", () => deleteTask(task.id));
 
-  item.append(checkbox, title, editBtn, deleteBtn);
+  item.append(checkbox, title, status, editBtn, deleteBtn);
   return item;
 }
 
@@ -106,6 +112,7 @@ async function deleteTask(id) {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   formError.hidden = true;
+  submitButton.disabled = true;
 
   try {
     await createTask(titleInput.value);
@@ -114,6 +121,8 @@ form.addEventListener("submit", async (event) => {
   } catch (err) {
     formError.textContent = err.message;
     formError.hidden = false;
+  } finally {
+    submitButton.disabled = false;
   }
 });
 
