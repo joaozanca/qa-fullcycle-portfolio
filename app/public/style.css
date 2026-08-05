@@ -1,0 +1,49 @@
+body {
+  font-family: system-ui, sans-serif;
+  max-width: 480px;
+  margin: 2rem auto;
+  color: #222;
+}
+
+#task-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+#task-title {
+  flex: 1;
+  padding: 0.4rem;
+}
+
+.error {
+  color: #b00020;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.task-item.completed .task-title {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.task-title {
+  flex: 1;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.8rem;
+  color: #888;
+}

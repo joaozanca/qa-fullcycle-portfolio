@@ -1,0 +1,28 @@
+{
+  "name": "qa-fullcycle-portfolio",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Ferramental de repositório (hooks, lint, commit lint) do projeto de portfólio QA Fullcycle",
+  "scripts": {
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "app/src/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{md,json,yml,yaml}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.0",
+    "@typescript-eslint/parser": "^8.8.0",
+    "eslint": "^8.57.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
+  }
+}

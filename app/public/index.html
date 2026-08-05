@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QA Fullcycle — Task CRUD</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Tasks</h1>
+
+      <form id="task-form" data-testid="task-form">
+        <input
+          id="task-title"
+          type="text"
+          placeholder="Título da task"
+          maxlength="100"
+          required
+          data-testid="task-title-input"
+        />
+        <button type="submit" data-testid="task-submit-button">Adicionar</button>
+      </form>
+      <p id="form-error" class="error" hidden data-testid="form-error"></p>
+
+      <ul id="task-list" data-testid="task-list"></ul>
+
+      <footer>
+        <span id="version" data-testid="version"></span>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

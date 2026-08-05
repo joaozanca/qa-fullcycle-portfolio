@@ -1,0 +1,34 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: qa_user
+      POSTGRES_PASSWORD: qa_password
+      POSTGRES_DB: qa_fullcycle
+    ports:
+      - "5432:5432"
+    volumes:
+      - qa_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qa_user -d qa_fullcycle"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: ./app
+    restart: unless-stopped
+    command: sh -c "npx prisma migrate deploy && npm start"
+    environment:
+      DATABASE_URL: postgresql://qa_user:qa_password@db:5432/qa_fullcycle?schema=public
+      PORT: 3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  qa_postgres_data:
