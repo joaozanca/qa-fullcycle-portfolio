@@ -1,20 +1,8 @@
 import { Router, Request, Response } from "express";
 import { prisma } from "../db";
+import { validateTitle } from "../validation";
 
 const router = Router();
-
-const TITLE_MIN_LENGTH = 1;
-const TITLE_MAX_LENGTH = 100;
-
-function validateTitle(title: unknown): string | null {
-  if (typeof title !== "string" || title.trim().length < TITLE_MIN_LENGTH) {
-    return "title is required";
-  }
-  if (title.length > TITLE_MAX_LENGTH) {
-    return `title must be at most ${TITLE_MAX_LENGTH} characters`;
-  }
-  return null;
-}
 
 // TC-04, TC-05 — listar Tasks (vazio ou populada)
 router.get("/", async (_req: Request, res: Response) => {
