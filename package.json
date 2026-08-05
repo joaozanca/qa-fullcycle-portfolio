@@ -11,6 +11,10 @@
       "eslint --fix",
       "prettier --write"
     ],
+    "tests/**/*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
     "*.{md,json,yml,yaml}": [
       "prettier --write"
     ]

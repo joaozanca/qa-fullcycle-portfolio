@@ -3,4 +3,6 @@ dist/
 .env
 *.log
 coverage/
+test-results/
+playwright-report/
 workflow-cicd-stages-local-zero-custo.md

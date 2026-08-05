@@ -1,0 +1,12 @@
+{
+  "name": "qa-fullcycle-api-tests",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Suite de testes de API automatizados da AUT (Task CRUD)",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0"
+  }
+}
