@@ -6,7 +6,9 @@
 
 **Ordem sugerida:** cada Parte é um marco fechável (branch → PR → merge). Não precisa esperar terminar uma fase da esteira inteira para começar a próxima Parte — várias rodam em paralelo depois que a Parte 3 (app + ambiente) estiver de pé.
 
-**Jira + Confluence de verdade.** Como o objetivo é simular a rotina real de um QA (e não só a técnica), vamos usar **Atlassian Cloud Free** (plano gratuito, até 10 usuários — continua custo zero) em vez dos substitutos locais (Gitea issues/Markdown) sugeridos no documento de CI/CD para essas duas ferramentas. Ou seja: nas Fases 0, 4 e 7 do outro documento, onde está `🔄` para Jira/Confluence, vamos manter as ferramentas originais. Todo o resto da esteira (Gitea, k3d, SonarQube etc.) segue local como planejado.
+**Jira + Confluence de verdade.** Como o objetivo é simular a rotina real de um QA (e não só a técnica), vamos usar **Atlassian Cloud Free** (plano gratuito, até 10 usuários — continua custo zero) em vez dos substitutos locais (Gitea issues/Markdown) sugeridos no documento de CI/CD para essas duas ferramentas. Ou seja: nas Fases 0, 4 e 7 do outro documento, onde está `🔄` para Jira/Confluence, vamos manter as ferramentas originais.
+
+**GitHub + GitHub Actions no lugar do Gitea local.** O documento de CI/CD original evita GitHub por causa de minutos pagos em repositório *privado* — mas este projeto é um portfólio público, e repositório público no GitHub tem **Actions ilimitado e gratuito**. Como o objetivo aqui é um recrutador conseguir abrir o link e ver o pipeline rodando de verdade (coisa que um runner só na sua máquina não entrega), o repositório é público no GitHub e o CI roda no **GitHub Actions** — não no Gitea Act Runner. O resto da esteira local (k3d, SonarQube CE, Grafana etc.) segue como estava, para as partes que fizer sentido demonstrar localmente com prints/vídeo.
 
 **Como cada passo vai funcionar.** Você não tem experiência prévia em QA, então a cada Parte eu vou: (1) executar/orientar a ação, e (2) **explicar depois** o que foi feito, por que é feito assim no mercado, e onde aquilo se encaixa na rotina de um QA real. Pode perguntar "por quê" a qualquer momento — faz parte do processo.
 
@@ -14,7 +16,7 @@
 
 ## Parte 0 — Fundação do projeto
 - Criar conta e **projeto no Jira** (tipo Scrum ou Kanban) + **espaço no Confluence** ligado a ele
-- Criar o repo Git (local, depois espelhar no Gitea local — Fase 0, stage 7 `criacao-branch` em diante)
+- Criar o repo Git local e publicar num **repositório público no GitHub** (Fase 0, stage 7 `criacao-branch` em diante)
 - Estrutura de pastas: `/app`, `/docs`, `/docs/adr`, `/tests` (`/tests/api`, `/tests/e2e`, `/tests/unit`, `/tests/perf`), `/qa` (artefatos de QA)
 - `README.md` inicial com objetivo do projeto (o "porquê" para quem for avaliar o portfólio)
 
@@ -62,7 +64,7 @@ Os artefatos que todo QA sênior é cobrado a produzir antes de testar, escritos
 - **Segurança básica**: OWASP ZAP baseline scan na AUT rodando local, Semgrep/Gitleaks já cobertos na esteira
 
 ## Parte 9 — Integração no pipeline CI/CD (Fase 2–6)
-- Ligar todas as suites (unit, API, E2E, perf) como stages no Gitea Act Runner
+- Ligar todas as suites (unit, API, E2E, perf) como jobs no **GitHub Actions**
 - Gates de qualidade bloqueando merge/deploy em caso de falha
 - Testar promoção `dev → staging` (Fase 4/5) validando com `e2e-tests` como gate de aprovação (stage 47)
 - Automatizar `update-jira` (mover issue para "Done" via API do Jira) e `update-confluence` (registrar a execução) ao fim do pipeline (stages 61–62, com as ferramentas reais)
