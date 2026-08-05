@@ -7,7 +7,7 @@ services:
       POSTGRES_PASSWORD: qa_password
       POSTGRES_DB: qa_fullcycle
     ports:
-      - "5432:5432"
+      - "5433:5432" # 5432 já é usado por um PostgreSQL nativo nesta máquina
     volumes:
       - qa_postgres_data:/var/lib/postgresql/data
     healthcheck:
