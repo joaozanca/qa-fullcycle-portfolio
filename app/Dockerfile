@@ -26,5 +26,9 @@ RUN npx prisma generate
 COPY --from=build /app/dist ./dist
 COPY public ./public
 
+# node:alpine já vem com um usuário sem privilégios (node, uid 1000) —
+# evita rodar a aplicação como root dentro do container.
+USER node
+
 EXPOSE 3000
 CMD ["npm", "start"]
