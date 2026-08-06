@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import cors from "cors";
+import helmet from "helmet";
 import path from "path";
 import fs from "fs";
 import client from "prom-client";
@@ -24,7 +24,7 @@ const httpRequestsTotal = new client.Counter({
   registers: [register],
 });
 
-app.use(cors());
+app.use(helmet());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "..", "public")));
 
