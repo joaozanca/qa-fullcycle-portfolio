@@ -37,6 +37,7 @@ function renderTaskItem(task) {
   checkbox.type = "checkbox";
   checkbox.checked = task.completed;
   checkbox.dataset.testid = "task-complete-checkbox";
+  checkbox.setAttribute("aria-label", `Marcar "${task.title}" como concluída`);
   checkbox.addEventListener("change", () => toggleComplete(task.id, checkbox.checked));
 
   const title = document.createElement("span");
