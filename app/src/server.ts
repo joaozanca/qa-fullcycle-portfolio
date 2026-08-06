@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import helmet from "helmet";
-import path from "path";
-import fs from "fs";
+import path from "node:path";
+import fs from "node:fs";
 import client from "prom-client";
 import { prisma } from "./db";
 import tasksRouter from "./routes/tasks";

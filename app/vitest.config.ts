@@ -5,7 +5,7 @@ export default defineConfig({
     include: ["src/**/*.test.ts"],
     coverage: {
       provider: "v8",
-      reporter: ["text", "html"],
+      reporter: ["text", "html", "lcov"],
       // Restrito ao módulo coberto por testes unitários de verdade.
       // O resto de src/ (rotas, servidor) é validado pelas suites de
       // API e E2E (Partes 5 e 6), que rodam contra o servidor real e

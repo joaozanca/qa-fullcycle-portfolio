@@ -20,6 +20,19 @@ body {
   color: #b00020;
 }
 
+/* Esconde visualmente sem esconder de leitores de tela (não usar display:none) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 #task-list {
   list-style: none;
   padding: 0;
