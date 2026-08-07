@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+
+route:
+  receiver: "default"
+  group_by: ["alertname"]
+  group_wait: 10s
+  group_interval: 30s
+  repeat_interval: 1h
+
+receivers:
+  - name: "default"
+    # Sem integração externa (Slack/e-mail) neste projeto — o objetivo
+    # aqui é demonstrar o mecanismo de alerta (regra -> disparo ->
+    # agrupamento), visível na UI do Alertmanager em localhost:9093.
+    # Em um ambiente real, entraria um webhook do Slack ou similar aqui.
