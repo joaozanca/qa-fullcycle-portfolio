@@ -48,3 +48,7 @@ volumes:
   qa_sonarqube_data:
   qa_sonarqube_extensions:
   qa_sonarqube_logs:
+
+networks:
+  default:
+    name: qa_fullcycle_network

@@ -21,8 +21,12 @@ docker run --rm -v "${PWD}:/src" semgrep/semgrep semgrep scan --config auto /src
 Execute a partir desta pasta (`tests/security`):
 
 ```powershell
-docker run --rm -v "${PWD}:/zap/wrk/:rw" -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://host.docker.internal:3000 -r zap-report.html
+docker run --rm --network qa_fullcycle_network -v "${PWD}:/zap/wrk/:rw" -t ghcr.io/zaproxy/zaproxy:stable zap-baseline.py -t http://app:3000 -r zap-report.html
 ```
+
+Usa a rede do `docker-compose` (`qa_fullcycle_network`) e o nome do serviço
+(`app`) em vez de `host.docker.internal` — funciona igual local e no CI
+(runners do GitHub Actions são Linux e não têm `host.docker.internal`).
 
 Gera `zap-report.html` (não versionado — é um artefato de execução, como
 o relatório de cobertura). O `zap.yaml` versionado é a configuração do
