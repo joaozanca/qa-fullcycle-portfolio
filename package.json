@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "description": "Ferramental de repositório (hooks, lint, commit lint) do projeto de portfólio QA Fullcycle",
   "scripts": {
-    "prepare": "husky"
+    "prepare": "husky",
+    "lint": "eslint app/src tests --ext .ts"
   },
   "lint-staged": {
     "app/src/**/*.ts": [
