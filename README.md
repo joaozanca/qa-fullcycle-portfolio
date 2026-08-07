@@ -15,18 +15,19 @@ API REST + front mínimo de CRUD de `Task`, com Postgres, `/health`, `/metrics` 
 
 ## Onde encontrar cada coisa
 
-| O quê                                       | Onde                                                                    |
-| ------------------------------------------- | ----------------------------------------------------------------------- |
-| Backlog, User Stories, Bugs                 | Jira — projeto "Projeto Completo QA"                                    |
-| Test Plan, Test Strategy, relatórios        | Confluence                                                              |
-| Código da aplicação                         | [`/app`](app)                                                           |
-| Testes automatizados                        | [`/tests`](tests) (`api`, `e2e`, `unit`, `perf`)                        |
-| Artefatos de QA (casos de teste, matrizes)  | [`/qa`](qa)                                                             |
-| Decisões técnicas de arquitetura (ADR)      | [`/docs/adr`](docs/adr)                                                 |
-| Plano do projeto                            | [`plano-projeto-qa-portfolio.md`](plano-projeto-qa-portfolio.md)        |
-| Pipeline de CI (GitHub Actions)             | [Actions](https://github.com/joaozanca/qa-fullcycle-portfolio/actions)  |
-| Quality gate (SonarCloud)                   | [SonarCloud](https://sonarcloud.io/dashboard?id=qa-fullcycle-portfolio) |
-| Scans de segurança (Semgrep, Gitleaks, ZAP) | [`/tests/security`](tests/security)                                     |
+| O quê                                               | Onde                                                                    |
+| --------------------------------------------------- | ----------------------------------------------------------------------- |
+| Backlog, User Stories, Bugs                         | Jira — projeto "Projeto Completo QA"                                    |
+| Test Plan, Test Strategy, relatórios                | Confluence                                                              |
+| Código da aplicação                                 | [`/app`](app)                                                           |
+| Testes automatizados                                | [`/tests`](tests) (`api`, `e2e`, `unit`, `perf`)                        |
+| Artefatos de QA (casos de teste, matrizes)          | [`/qa`](qa)                                                             |
+| Decisões técnicas de arquitetura (ADR)              | [`/docs/adr`](docs/adr)                                                 |
+| Plano do projeto                                    | [`plano-projeto-qa-portfolio.md`](plano-projeto-qa-portfolio.md)        |
+| Pipeline de CI (GitHub Actions)                     | [Actions](https://github.com/joaozanca/qa-fullcycle-portfolio/actions)  |
+| Quality gate (SonarCloud)                           | [SonarCloud](https://sonarcloud.io/dashboard?id=qa-fullcycle-portfolio) |
+| Scans de segurança (Semgrep, Gitleaks, ZAP)         | [`/tests/security`](tests/security)                                     |
+| Observabilidade (Prometheus, Grafana, Alertmanager) | [`/observability`](observability)                                       |
 
 ## Status
 

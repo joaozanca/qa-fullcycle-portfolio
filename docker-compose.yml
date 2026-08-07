@@ -20,7 +20,7 @@ services:
     build:
       context: ./app
     restart: unless-stopped
-    command: sh -c "npx prisma migrate deploy && npm start"
+    command: sh -c "npm run prisma:deploy && npm start"
     environment:
       DATABASE_URL: postgresql://qa_user:qa_password@db:5432/qa_fullcycle?schema=public
       PORT: 3000
@@ -43,11 +43,49 @@ services:
       - qa_sonarqube_extensions:/opt/sonarqube/extensions
       - qa_sonarqube_logs:/opt/sonarqube/logs
 
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    profiles: ["observability"]
+    volumes:
+      - ./observability/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./observability/prometheus/alert-rules.yml:/etc/prometheus/alert-rules.yml:ro
+      - qa_prometheus_data:/prometheus
+    ports:
+      - "9090:9090"
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    restart: unless-stopped
+    profiles: ["observability"]
+    volumes:
+      - ./observability/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+    ports:
+      - "9093:9093"
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    profiles: ["observability"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+    volumes:
+      - ./observability/grafana/provisioning:/etc/grafana/provisioning:ro
+      - qa_grafana_data:/var/lib/grafana
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+
 volumes:
   qa_postgres_data:
   qa_sonarqube_data:
   qa_sonarqube_extensions:
   qa_sonarqube_logs:
+  qa_prometheus_data:
+  qa_grafana_data:
 
 networks:
   default:
