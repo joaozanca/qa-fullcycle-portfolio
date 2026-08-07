@@ -5,11 +5,11 @@ RUN apk add --no-cache openssl
 
 COPY package*.json ./
 COPY prisma ./prisma
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY tsconfig.json ./
 COPY src ./src
-RUN npx prisma generate
+RUN npm run prisma:generate
 RUN npm run build
 
 # --- production stage ---
@@ -20,8 +20,8 @@ RUN apk add --no-cache openssl
 
 COPY package*.json ./
 COPY prisma ./prisma
-RUN npm ci --omit=dev
-RUN npx prisma generate
+RUN npm ci --omit=dev --ignore-scripts
+RUN npm run prisma:generate
 
 COPY --from=build /app/dist ./dist
 COPY public ./public

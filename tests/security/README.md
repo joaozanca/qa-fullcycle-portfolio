@@ -34,8 +34,11 @@ scan, criada automaticamente pelo próprio ZAP.
 
 ## Achados triados (histórico)
 
-| Ferramenta | Achado                                                                                                           | Resolução                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Semgrep    | Container rodando como root                                                                                      | Corrigido — `USER node` no Dockerfile (KAN-12)              |
-| ZAP        | Cabeçalhos de segurança ausentes + CORS aberto                                                                   | Corrigido — `helmet` + remoção do `cors()` (Bug 6)          |
-| ZAP        | `Storable and Cacheable Content`, `Permissions-Policy`, `Modern Web Application`, `Cross-Origin-Embedder-Policy` | Triado como baixo risco para esta aplicação — não corrigido |
+| Ferramenta | Achado                                                                                                           | Resolução                                                                 |
+| ---------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Semgrep    | Container rodando como root                                                                                      | Corrigido — `USER node` no Dockerfile (KAN-12)                            |
+| Semgrep    | GitHub Actions com tag mutável (`@v4`)                                                                           | Corrigido — pinado no hash de commit (Bug 8)                              |
+| ZAP        | Cabeçalhos de segurança ausentes + CORS aberto                                                                   | Corrigido — `helmet` + remoção do `cors()` (Bug 6)                        |
+| ZAP        | `Storable and Cacheable Content`, `Permissions-Policy`, `Modern Web Application`, `Cross-Origin-Embedder-Policy` | Triado como baixo risco para esta aplicação — não corrigido               |
+| ZAP        | Protocolo HTTP sem criptografia entre containers no CI                                                           | Triado como baixo risco — tráfego interno, runner efêmero — não corrigido |
+| SonarCloud | `npm ci` sem `--ignore-scripts` / `npx` sem versão travada (Dockerfile + ci.yml)                                 | Corrigido — hardening de supply-chain (Bug 9)                             |
