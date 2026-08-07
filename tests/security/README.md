@@ -32,6 +32,20 @@ Gera `zap-report.html` (não versionado — é um artefato de execução, como
 o relatório de cobertura). O `zap.yaml` versionado é a configuração do
 scan, criada automaticamente pelo próprio ZAP.
 
+## SonarCloud
+
+Quality gate consolidado, público: https://sonarcloud.io/dashboard?id=qa-fullcycle-portfolio
+
+Roda automaticamente no CI (job `sonarcloud`). Pra rodar local, contra o
+mesmo projeto:
+
+```powershell
+docker run --rm -v "${PWD}:/usr/src" -w /usr/src sonarsource/sonar-scanner-cli sonar-scanner -D sonar.host.url=https://sonarcloud.io -D sonar.organization=joaozanca -D sonar.token=<seu-token>
+```
+
+O `sonar-project.properties` (raiz do repo) também serve pro **SonarQube
+CE local** (Parte 8) — só o host/organização/token mudam entre os dois.
+
 ## Achados triados (histórico)
 
 | Ferramenta | Achado                                                                                                           | Resolução                                                                 |
