@@ -1,0 +1,21 @@
+site_name: QA Fullcycle Portfolio
+site_description: Documentação da jornada de construção do projeto
+repo_url: https://github.com/joaozanca/qa-fullcycle-portfolio
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+  features:
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - Início: index.md
+  - Jornada do projeto: jornada.md
+  - Decisões e trade-offs: decisoes.md
+  - Métricas de QA: metricas.md
+  - ADRs técnicos:
+      - Stack Node.js/TypeScript: adr/0001-stack-nodejs-typescript.md
+      - PostgreSQL + Prisma: adr/0002-postgresql-prisma.md
+      - Docker Compose sem Kubernetes: adr/0003-docker-compose-sem-kubernetes.md

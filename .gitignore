@@ -6,4 +6,6 @@ coverage/
 test-results/
 playwright-report/
 tests/security/zap-report.html
+reports/
+site/
 workflow-cicd-stages-local-zero-custo.md
