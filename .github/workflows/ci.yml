@@ -16,15 +16,18 @@ jobs:
         with:
           node-version: 20
       - name: Instalar dependências (raiz)
-        run: npm ci
+        run: npm ci --ignore-scripts
       - name: Instalar dependências (app)
         working-directory: app
-        run: npm ci
+        run: npm ci --ignore-scripts
+      - name: Gerar Prisma Client
+        working-directory: app
+        run: npm run prisma:generate
       - name: Lint
         run: npm run lint
       - name: Typecheck
         working-directory: app
-        run: npx tsc -p tsconfig.json --noEmit
+        run: npm run typecheck
       - name: Testes unitários com coverage gate
         working-directory: app
         run: npm run test:unit:coverage
@@ -60,10 +63,10 @@ jobs:
           node-version: 20
       - name: Instalar dependências dos testes de API
         working-directory: tests/api
-        run: npm ci
+        run: npm ci --ignore-scripts
       - name: Rodar testes de API
         working-directory: tests/api
-        run: npx playwright test
+        run: npm test
       - name: Logs da aplicação (em caso de falha)
         if: failure()
         run: docker compose logs app
@@ -83,13 +86,13 @@ jobs:
           node-version: 20
       - name: Instalar dependências dos testes E2E
         working-directory: tests/e2e
-        run: npm ci
+        run: npm ci --ignore-scripts
       - name: Instalar navegador do Playwright
         working-directory: tests/e2e
-        run: npx playwright install --with-deps chromium
+        run: npm run playwright:install
       - name: Rodar testes E2E
         working-directory: tests/e2e
-        run: npx playwright test
+        run: npm test
       - name: Logs da aplicação (em caso de falha)
         if: failure()
         run: docker compose logs app
@@ -143,7 +146,7 @@ jobs:
       - name: Instalar dependências e gerar cobertura
         working-directory: app
         run: |
-          npm ci
+          npm ci --ignore-scripts
           npm run test:unit:coverage
       - name: SonarCloud Scan
         run: |

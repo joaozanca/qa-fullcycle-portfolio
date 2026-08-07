@@ -4,7 +4,8 @@
   "version": "0.1.0",
   "description": "Suite de testes E2E/UI automatizados da AUT (Task CRUD) com Playwright",
   "scripts": {
-    "test": "playwright test"
+    "test": "playwright test",
+    "playwright:install": "playwright install --with-deps chromium"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.12.1",
