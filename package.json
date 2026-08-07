@@ -5,7 +5,8 @@
   "description": "Ferramental de repositório (hooks, lint, commit lint) do projeto de portfólio QA Fullcycle",
   "scripts": {
     "prepare": "husky",
-    "lint": "eslint app/src tests --ext .ts"
+    "lint": "eslint app/src tests --ext .ts",
+    "allure:generate": "allure generate reports/allure-results --clean -o reports/allure-report"
   },
   "lint-staged": {
     "app/src/**/*.ts": [
@@ -25,6 +26,7 @@
     "@commitlint/config-conventional": "^19.5.0",
     "@typescript-eslint/eslint-plugin": "^8.8.0",
     "@typescript-eslint/parser": "^8.8.0",
+    "allure-commandline": "^2.32.0",
     "eslint": "^8.57.1",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
