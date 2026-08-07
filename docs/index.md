@@ -16,6 +16,6 @@ Uma API REST + frontend mínimo de CRUD de `Task`, construída deliberadamente s
 - **Pipeline de CI**: [GitHub Actions](https://github.com/joaozanca/qa-fullcycle-portfolio/actions)
 - **Quality gate**: [SonarCloud](https://sonarcloud.io/dashboard?id=qa-fullcycle-portfolio)
 - **Backlog e bugs**: Jira (projeto "Projeto Completo QA")
-- **Documentação de processo**: Confluence (Test Plan, Test Strategy, relatórios de execução)
+- **Documentação de processo**: [Confluence](https://joao-zanca.atlassian.net/wiki/spaces/~7120207430e143f1454afe9c57211d86eee509/overview?homepageId=163934) (Test Plan, Test Strategy, relatórios de execução) — requer conta Atlassian
 
 Esta documentação (`/docs`) complementa o Confluence — enquanto o Confluence guarda os artefatos de processo (Test Plan, matrizes, relatórios), aqui fica a narrativa técnica: as decisões, os trade-offs, e por quê.

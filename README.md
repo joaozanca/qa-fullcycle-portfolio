@@ -17,16 +17,16 @@ API REST + frontend mínimo de CRUD de `Task`, com Postgres, `/health`, `/metric
 
 ## O que este projeto demonstra
 
-| Área                              | Onde ver                                                                                                                                    |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| Planejamento e documentação de QA | Confluence (Test Plan, Test Strategy, Matriz de Risco, DoR/DoD)                                                                             |
-| Design de casos de teste          | [`/qa`](qa) — Gherkin, matriz de rastreabilidade, técnicas de design                                                                        |
-| Gestão de bugs e backlog          | Jira — projeto "Projeto Completo QA"                                                                                                        |
-| Automação de API e E2E            | [`/tests`](tests) — Playwright                                                                                                              |
-| Testes não funcionais             | Performance (k6), acessibilidade (axe-core), segurança (Semgrep, Gitleaks, ZAP, SonarCloud)                                                 |
-| Pipeline de CI/CD                 | [GitHub Actions](https://github.com/joaozanca/qa-fullcycle-portfolio/actions) — 7+ jobs, branch protection real, testado com PRs de verdade |
-| Observabilidade                   | [`/observability`](observability) — Prometheus, Grafana, Alertmanager                                                                       |
-| Relatório consolidado             | Allure (gerado no pipeline, artefato de cada execução)                                                                                      |
+| Área                              | Onde ver                                                                                                                                                                                                    |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Planejamento e documentação de QA | [Confluence](https://joao-zanca.atlassian.net/wiki/spaces/~7120207430e143f1454afe9c57211d86eee509/overview?homepageId=163934) (Test Plan, Test Strategy, Matriz de Risco, DoR/DoD) — requer conta Atlassian |
+| Design de casos de teste          | [`/qa`](qa) — Gherkin, matriz de rastreabilidade, técnicas de design                                                                                                                                        |
+| Gestão de bugs e backlog          | Jira — projeto "Projeto Completo QA"                                                                                                                                                                        |
+| Automação de API e E2E            | [`/tests`](tests) — Playwright                                                                                                                                                                              |
+| Testes não funcionais             | Performance (k6), acessibilidade (axe-core), segurança (Semgrep, Gitleaks, ZAP, SonarCloud)                                                                                                                 |
+| Pipeline de CI/CD                 | [GitHub Actions](https://github.com/joaozanca/qa-fullcycle-portfolio/actions) — 7+ jobs, branch protection real, testado com PRs de verdade                                                                 |
+| Observabilidade                   | [`/observability`](observability) — Prometheus, Grafana, Alertmanager                                                                                                                                       |
+| Relatório consolidado             | Allure (gerado no pipeline, artefato de cada execução)                                                                                                                                                      |
 
 ## Documentação
 
